@@ -22,7 +22,7 @@ public class formMain extends formFunction {
     private final int ejeX = 800;
     private final int ejeY = 600;
 
-    public formMain(JFrame frame, JPanel panel, String[] unidades){
+    public formMain(JFrame frame, JPanel panel, String[] unidades, int tipo){
         frame.setTitle("Conversor Alura");
         headerForm(panel);
 
@@ -47,7 +47,7 @@ public class formMain extends formFunction {
         JLabel result = new JLabel();
         styleResult(panel, result, 200, 450, 400, 80);
 
-        btnConvertir.addActionListener(e -> sendData(result, textConverter, comboEntrada, comboSalida));
+        btnConvertir.addActionListener(e -> sendData(result, textConverter, comboEntrada, comboSalida, tipo));
         btnDivisa.addActionListener(e -> changeButtom(frame, panel, 0));
         btnTemperatura.addActionListener(e -> changeButtom(frame, panel, 1));
         btnPeso.addActionListener(e -> changeButtom(frame, panel, 2));
