@@ -1,4 +1,4 @@
-package conversoralura.formInit;
+package ConversorAlura.FormInit;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -6,8 +6,9 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.*;
+import java.util.Map;
 
-public class formMain extends formFunction {
+public class FormMain extends FormFunction {
     /**
      * Creación de componentes e imagenes del formulario
      * */
@@ -22,7 +23,7 @@ public class formMain extends formFunction {
     private final int ejeX = 800;
     private final int ejeY = 600;
 
-    public formMain(JFrame frame, JPanel panel, String[] unidades, int tipo){
+    public FormMain(JFrame frame, JPanel panel, String[] unidades, int tipo, Map symbol, Map changeValue){
         frame.setTitle("Conversor Alura");
         headerForm(panel);
 
@@ -47,7 +48,8 @@ public class formMain extends formFunction {
         JLabel result = new JLabel();
         styleResult(panel, result, 200, 450, 400, 80);
 
-        btnConvertir.addActionListener(e -> sendData(result, textConverter, comboEntrada, comboSalida, tipo));
+        btnConvertir.addActionListener(e -> sendData(result, textConverter, comboEntrada, comboSalida, tipo, symbol, changeValue));
+
         btnDivisa.addActionListener(e -> changeButtom(frame, panel, 0));
         btnTemperatura.addActionListener(e -> changeButtom(frame, panel, 1));
         btnPeso.addActionListener(e -> changeButtom(frame, panel, 2));
