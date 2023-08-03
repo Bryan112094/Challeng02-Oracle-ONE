@@ -16,10 +16,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public abstract class FormFunction {
-
     /**
-     * Con esta función, JTextField solo podra aceptar números
-     * */
+     * Metodo para que el valor ingresado en el Input sea solo numero, cualquier otra valor no se escribirá
+     * @param textField -> Input a configurar
+     */
     public void NumbersOnly(JTextField textField){
         AbstractDocument document = (AbstractDocument) textField.getDocument();
         DocumentFilter documentFilter = new DocumentFilter() {
@@ -42,6 +42,16 @@ public abstract class FormFunction {
         document.setDocumentFilter(documentFilter);
     }
 
+    /**
+     *
+     * @param text
+     * @param conver
+     * @param entrada
+     * @param salida
+     * @param tipo
+     * @param symbol
+     * @param changeValue
+     */
     public void sendData(JLabel text, JTextField conver, JComboBox entrada, JComboBox salida, int tipo, Map<String ,String> symbol, Map<String, Double> changeValue) {
         String resultant = null;
         //Obtener los valoces selccionados
@@ -77,6 +87,13 @@ public abstract class FormFunction {
         }
     }
 
+    /**
+     * Metodo que delvoverá el valor de la conversion utilizando la API de divisas con el metodo Requestapi.
+     * @param firstDivisa   -> Primer simbolo de divisas para la API.
+     * @param secondDivisa  -> Segundo simbolo de divisas para la API.
+     * @param valor         -> Valor que se multipicada con lo que retorne la API
+     * @return Valor de la Divisa
+     */
     public String converterDivisa(String firstDivisa, String secondDivisa, String valor) {
         DecimalFormat df = new DecimalFormat("###.##");
         double rptaApi = ApiClass.Requestapi("55f172bc40dd3f6d642cbfc7", firstDivisa, secondDivisa);
@@ -85,6 +102,14 @@ public abstract class FormFunction {
         return "Aprox.: " + String.valueOf(df.format(rpta)) + " " + secondDivisa;
     }
 
+    /**
+     * Metodo para la conversión de las unidades de temperaturas
+     * @param union     -> String a comprobar en el Map, obtendra un valor para la formula
+     * @param valor     -> Valor del input.
+     * @param valSymbol -> Simbolo de la unidad de temperatura
+     * @param valChange -> Valores del Map
+     * @return Valor de la unidad de temperatura
+     */
     public String converterTemperatura (String union, String valor, String valSymbol, Map<String, Double> valChange) {
         double rpta = 0;
         Map<String, Double> valueTwo = new HashMap<>();
@@ -112,6 +137,14 @@ public abstract class FormFunction {
         return String.valueOf(df.format(rpta)) + " " + valSymbol;
     }
 
+    /**
+     * Metodo para la conversion de unidades de Peso y Longitud
+     * @param union     -> String a comprobar en el Map, obtendra un valor para la formula
+     * @param valor     -> Valor del input.
+     * @param valSymbol -> Simbolo de la unidad a convertir
+     * @param valChange -> Valores del Map
+     * @return Valor de la unidad
+     */
     public String converterOther (String union, String valor, String valSymbol, Map<String, Double> valChange) {
         double rpta = 0;
         DecimalFormat df = new DecimalFormat("###.####");
@@ -125,8 +158,15 @@ public abstract class FormFunction {
         return String.valueOf(df.format(rpta)) + " " + valSymbol;
     }
 
+    /**
+     * Metodo para hacer el cambio de componentes que tendra JFrame.
+     * @param frame -> JFrame donde almacenara el panel.
+     * @param panel -> JPanel donde estaran todos los componentes.
+     * @param opt   -> Opción de cambion de componentes del JFrame
+     */
     public void changeButtom(JFrame frame, JPanel panel, int opt) {
         frame.remove(panel);
+        frame.dispose();
         switch (opt) {
             case 0:
                 new DivisasGUI(frame);

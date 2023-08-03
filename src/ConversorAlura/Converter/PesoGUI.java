@@ -13,6 +13,10 @@ public class PesoGUI {
     private Map<String, String> symbol = new HashMap<>();
     private Map<String, Double> changeValue = new HashMap<>();
 
+    /**
+     * Contructor de la clase, la cual creara el formulario udando el método FromMain.
+     * @param frame -> JFrame sobre el se creara el formulario.
+     */
     public PesoGUI(JFrame frame){
         symbol.put("Kilogramo", "Kg");
         symbol.put("Gramo", "g");

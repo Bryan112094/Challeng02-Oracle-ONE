@@ -13,6 +13,10 @@ public class TemperaturaGUI {
     private Map<String, String> symbol = new HashMap<>();
     private Map<String, Double> changeValue = new HashMap<>();
 
+    /**
+     * Contructor de la clase, la cual creara el formulario udando el método FromMain.
+     * @param frame -> JFrame sobre el se creara el formulario.
+     */
     public TemperaturaGUI(JFrame frame) {
         symbol.put("Celsius", "°C");
         symbol.put("Fahrenheit", "°F");

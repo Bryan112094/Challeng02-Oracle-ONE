@@ -9,9 +9,6 @@ import java.awt.*;
 import java.util.Map;
 
 public class FormMain extends FormFunction {
-    /**
-     * Creación de componentes e imagenes del formulario
-     * */
     private final ImageIcon icoAlura = new ImageIcon("src/conversoralura/resources/alura.jpg");
     private final ImageIcon icoOracle = new ImageIcon("src/conversoralura/resources/oracle.jpg");
     private final ImageIcon icoDivisa = new ImageIcon("src/conversoralura/resources/divisas.png");
@@ -20,9 +17,18 @@ public class FormMain extends FormFunction {
     private final ImageIcon icoLongitud = new ImageIcon("src/conversoralura/resources/longitud.png");
     private final Color backBlue = new Color(5, 25, 51);
     private final Color backCele = new Color(41, 122, 227);
-    private final int ejeX = 800;
-    private final int ejeY = 600;
+    private final int widthX = 800;
+    private final int heightY = 600;
 
+    /**
+     * Constructor para la creación del formulario del Conversor.
+     * @param frame         -> JFrame ventana donde se almcena el panel.
+     * @param panel         -> JPanel donde estará almacenado los componentes del formulario.
+     * @param unidades      -> unidades a convertir.
+     * @param tipo          -> tipo de las 4 opciones a convertir.
+     * @param symbol        -> simbolo de los unidades.
+     * @param changeValue   -> Cambio de valor de las unidades.
+     */
     public FormMain(JFrame frame, JPanel panel, String[] unidades, int tipo, Map symbol, Map changeValue){
         frame.setTitle("Conversor Alura");
         headerForm(panel);
@@ -56,9 +62,13 @@ public class FormMain extends FormFunction {
         btnLongitud.addActionListener(e -> changeButtom(frame, panel, 3));
 
         footerForm(panel);
-        configFinal(frame, panel, ejeX, ejeY);
+        configFinal(frame, panel, widthX, heightY);
     }
 
+    /**
+     * Metodo para crear el header del formulario donde estara logos y Título
+     * @param panel
+     */
     private void headerForm(JPanel panel){
         JLabel logoAlura = new JLabel();
         styleLogo(logoAlura, icoAlura, 70, 10, 125, 85, panel);
@@ -67,17 +77,31 @@ public class FormMain extends FormFunction {
         styleLogo(logoOracle, icoOracle, 470, 35, 260, 35, panel);
 
         JLabel backHeader = new JLabel();
-        backOrTitle(backHeader, 0, backBlue, 0, 0, ejeX, 105, panel);
+        backOrTitle(backHeader, 0, backBlue, 0, 0, widthX, 105, panel);
 
         JLabel titleGeneral = new JLabel("Conversor de:", SwingConstants.CENTER);
-        backOrTitle(titleGeneral, 1, backBlue, 0, 105, ejeX, 35, panel);
+        backOrTitle(titleGeneral, 1, backBlue, 0, 105, widthX, 35, panel);
     }
 
+    /**
+     * Metodo para crear el footer del formulario donde estara logos y Título
+     * @param panel
+     */
     private void footerForm(JPanel panel){
         JLabel textFooter = new JLabel("Implementado por: Guevara Ascoy Cristhian Bryan", SwingConstants.CENTER);
-        backOrTitle(textFooter, 0, backBlue, 0, 570, ejeX, 30, panel);
+        backOrTitle(textFooter, 0, backBlue, 0, 570, widthX, 30, panel);
     }
 
+    /**
+     * metodo para darle estilo al logo del formulario
+     * @param logo  -> JLabel, espacio reservado para almacenar el icono del logo
+     * @param icono -> Imagen.
+     * @param x     -> Posicionamiento en el eje X
+     * @param y     -> Posicionamiento en el eje Y
+     * @param width -> Ancho del espacio para el logo
+     * @param height-> Alto del espacio para el logo
+     * @param panel -> Panel donde de almacena todos los componentes
+     */
     public void styleLogo(JLabel logo, ImageIcon icono, int x, int y, int width, int height, JPanel panel){
         logo.setIcon(icono);
         logo.setHorizontalTextPosition(JLabel.CENTER);
@@ -86,6 +110,17 @@ public class FormMain extends FormFunction {
         logo.setBounds(x, y, width, height);
     }
 
+    /**
+     * Método para darle estilo fondo con o sin texto.
+     * @param texto -> JLabel espacio para el texto.
+     * @param tipo  -> Valores 0 y 1, para verificar si es con texto o no
+     * @param color -> Color de fondo
+     * @param x     -> Posicionamiento en el eje X
+     * @param y     -> Posicionamiento en el eje Y
+     * @param width -> Ancho del espacio del componente
+     * @param height-> Alto del espacio del componente
+     * @param panel -> Panel donde de almacena todos los componentes
+     */
     public void backOrTitle(JLabel texto, int tipo, Color color, int x, int y, int width, int height, JPanel panel) {
         texto.setOpaque(true);
         if (tipo == 1) {
@@ -99,6 +134,19 @@ public class FormMain extends FormFunction {
         panel.add(texto);
         texto.setBounds(x, y, width, height);
     }
+
+    /**
+     * Método para darle estilo a los botones del formulario
+     * @param boton -> JButton para darle el estilo
+     * @param icono -> Imagen para los botones
+     * @param color -> Color del boton
+     * @param x     -> Posicionamiento en el eje X
+     * @param y     -> Posicionamiento en el eje Y
+     * @param width -> Ancho del espacio del componente
+     * @param height-> Alto del espacio del componente
+     * @param panel -> Panel donde de almacena todos los componentes
+     * @param tipo  -> Tipo de boton del formulario
+     */
     public void styleBtnConversor(JButton boton, ImageIcon icono, Color color, int x, int y, int width, int height, JPanel panel, int tipo){
         boton.setFocusable(false);
 
@@ -119,6 +167,15 @@ public class FormMain extends FormFunction {
         boton.setBounds(x, y, width, height);
     }
 
+    /**
+     * Método para crear los Combos y el input del formulario.
+     * @param panel         -> Panel donde de almacena todos los componentes.
+     * @param comboEntrada  -> Primer combo para almacenar datos.
+     * @param comboSalida   -> Segundo combo para almacenar datos.
+     * @param textConverter -> input para escrbir el valor a convertir.
+     * @param width         -> Ancho del espacio del componente
+     * @param height        -> Alto del espacio del componente
+     */
     public void createCmbTxt(JPanel panel, JComboBox comboEntrada, JComboBox comboSalida, JTextField textConverter, int width, int height) {
         Border line = new LineBorder(Color.BLACK);
         Border margin = new EmptyBorder(5, 15, 5, 15);
@@ -135,6 +192,15 @@ public class FormMain extends FormFunction {
         textConverter.setBounds(300, 320, 200, height + 5);
     }
 
+    /**
+     * Metodo para darle estilo al cuadro del resultado para el valor convertido.
+     * @param panel -> Panel donde de almacena todos los componentes.
+     * @param text  -> JLabel para almacenar el valor.
+     * @param x     -> Posicionamiento en el eje X
+     * @param y     -> Posicionamiento en el eje Y
+     * @param width -> Ancho del espacio del componente
+     * @param height-> Alto del espacio del componente
+     */
     public void styleResult(JPanel panel, JLabel text, int x, int y, int width, int height){
         Border line = new LineBorder(Color.BLACK);
         Border margin = new EmptyBorder(5, 15, 5, 15);
@@ -149,12 +215,19 @@ public class FormMain extends FormFunction {
         text.setBounds(x, y, width, height);
     }
 
-    public void configFinal(JFrame frame, JPanel panel, int x, int y) {
+    /**
+     * Metodo para configurar la parte final del JFrame.
+     * @param frame -> JFrame donde se almacenara el Panel
+     * @param panel -> JPanel donde estaran todos los componentes
+     * @param width -> Ancho del JFrame
+     * @param height-. Alto del JFrame
+     */
+    public void configFinal(JFrame frame, JPanel panel, int width, int height) {
         panel.setLayout(null);
-        panel.setPreferredSize(new Dimension(x, y));
+        panel.setPreferredSize(new Dimension(width, height));
 
         frame.add(panel);
-        frame.setSize(x, y);
+        frame.setSize(width, height);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
