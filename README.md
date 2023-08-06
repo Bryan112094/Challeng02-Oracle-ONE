@@ -7,16 +7,14 @@ Conversor de Temperatura, Peso y Distancia: Convierte la cantidad de unidad ingr
 
 Nota: Puedes realizar múltiples conversiones sin necesidad de reiniciar el programa.
 ## Como funciona el sistema
+https://github.com/Bryan112094/Challeng02-Oracle-ONE/assets/44212126/840c31e5-86f3-414e-8014-0f15fed0a6d2
 ## Instalación 1
 1. Descargar el código en archivo ZIP.
 2. Exportarlo el proyecto en el IDE de preferencia.
 3. Ejecutar el Programa.
-
 ## Instalación 2
-
 1. Clonar el repositorio.
    ```sh
    git clone https://github.com/Bryan112094/Challeng02-Oracle-ONE.git
-
 2. Exportar el proyecto en el IDE de preferencia.
 3. Ejecutar el programa.
