@@ -9,12 +9,12 @@ import java.awt.*;
 import java.util.Map;
 
 public class FormMain extends FormFunction {
-    private final ImageIcon icoAlura = new ImageIcon("src/conversoralura/resources/alura.jpg");
-    private final ImageIcon icoOracle = new ImageIcon("src/conversoralura/resources/oracle.jpg");
-    private final ImageIcon icoDivisa = new ImageIcon("src/conversoralura/resources/divisas.png");
-    private final ImageIcon icoTemperatura = new ImageIcon("src/conversoralura/resources/temperatura.png");
-    private final ImageIcon icoPeso = new ImageIcon("src/conversoralura/resources/peso.png");
-    private final ImageIcon icoLongitud = new ImageIcon("src/conversoralura/resources/longitud.png");
+    private final ImageIcon icoAlura = new ImageIcon("./Resources/alura.jpg");
+    private final ImageIcon icoOracle = new ImageIcon("./Resources/oracle.jpg");
+    private final ImageIcon icoDivisa = new ImageIcon("./Resources/divisas.png");
+    private final ImageIcon icoTemperatura = new ImageIcon("./Resources/temperatura.png");
+    private final ImageIcon icoPeso = new ImageIcon("./Resources/peso.png");
+    private final ImageIcon icoLongitud = new ImageIcon("./Resources/longitud.png");
     private final Color backBlue = new Color(5, 25, 51);
     private final Color backCele = new Color(41, 122, 227);
     private final int widthX = 800;

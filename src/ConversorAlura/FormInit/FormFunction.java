@@ -166,7 +166,6 @@ public abstract class FormFunction {
      */
     public void changeButtom(JFrame frame, JPanel panel, int opt) {
         frame.remove(panel);
-        frame.dispose();
         switch (opt) {
             case 0:
                 new DivisasGUI(frame);
